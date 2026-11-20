@@ -19,7 +19,13 @@ jobs:
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: '8.0.x'
-
+          
+      - name: Check project files
+        run: |
+          pwd
+          ls -la
+          find . -name "*.csproj"
+          
       - name: Restore
         run: dotnet restore GuestBook_Azurite_Complete/GuestBook.Web.csproj
 
