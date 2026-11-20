@@ -1,0 +1,11 @@
+using GuestBook.Web.Services;
+var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddRazorPages();
+builder.Services.AddSingleton<TableStorageService>();
+builder.Services.AddSingleton<BlobStorageService>();
+builder.Services.AddSingleton<QueueStorageService>();
+var app = builder.Build();
+app.UseStaticFiles();
+app.UseRouting();
+app.MapRazorPages();
+app.Run();

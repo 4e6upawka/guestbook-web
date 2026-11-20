@@ -1,0 +1,7 @@
+@page
+@model GuestBook.Web.Pages.GalleryModel
+@{ ViewData["Title"] = "Галерея"; }
+<!DOCTYPE html><html lang="ru"><head><meta charset="utf-8"/><title>Галерея</title><style>body{font:16px Segoe UI,Arial,sans-serif;background:#f4f6fb;max-width:850px;margin:40px auto;padding:15px}.item{background:white;border:1px solid #ddd;padding:16px;margin:15px 0;border-radius:12px}img{max-width:300px;max-height:230px;display:block;margin:10px 0}button{background:#c93749;color:white;border:0;border-radius:7px;padding:10px;cursor:pointer}</style></head><body>
+<a href="/">← Гостевая книга</a><h1>Галерея фотографий</h1><p>Всего файлов: @Model.BlobNames.Count</p>
+@foreach (var name in Model.BlobNames) { <div class="item"><strong>@name</strong><img src="@Url.Page("/Index", "Photo", new { name })" alt="Фото"/><form method="post" asp-page-handler="Delete" onsubmit="return confirm('Удалить файл?')"><input type="hidden" name="name" value="@name"/><button type="submit">Удалить файл</button></form></div> }
+</body></html>
