@@ -3,9 +3,9 @@ name: GuestBook CI
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
   pull_request:
-    branches: [ "main" ]
+    branches: ["main"]
 
 jobs:
   build:
@@ -18,16 +18,10 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: '8.0.x'
-          
-      - name: Check project files
-        run: |
-          pwd
-          ls -la
-          find . -name "*.csproj"
-          
+          dotnet-version: "8.0.x"
+
       - name: Restore
         run: dotnet restore GuestBook_Azurite_Complete/GuestBook.Web.csproj
 
       - name: Build
-        run: dotnet build GuestBook_Azurite_Complete/GuestBook.Web.csproj --configuration Release
+        run: dotnet build GuestBook_Azurite_Complete/GuestBook.Web.csproj --configuration Release --no-restore
